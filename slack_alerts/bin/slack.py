@@ -14,24 +14,23 @@ def decode_all_matching_urls(match):
     return url_decode(match)
 
 def send_slack_message(settings):
+    jtext = decode_all_urls(settings.get('message'))
+    jusername = settings.get('from_user', 'Splunk')
+    jurl = settings.get('from_user_icon')
+    jcolor = settings.get('color')
+
     params = dict()
-    parmas['attachments'] = []
+    params['attachments'] = []
 
     params['attachments'].append({
-    'text': decode_all_urls(settings.get('message')),
-    'username': settings.get('from_user', 'Splunk'),
-    'icon_url': settings.get('from_user_icon'),
-    'color': settings.get('color')})
+    'text': jtext,
+    'username': jusername,
+    'icon_url': jurl,
+    'color': jcolor
+    })
 
     with open('data.json', 'w') as outfile:
     	json.dump(params, outfile)
-
-    # Decode the results link since it was already encoded; otherwise, it will be double encoded
-    # params['attachments']['text'] = decode_all_urls(settings.get('message'))
-    #
-    # params['username'] = settings.get('from_user', 'Splunk')
-    # params['icon_url'] = settings.get('from_user_icon')
-    # params['attachments']['color'] = settings.get('color')
 
     channel = settings.get('channel')
     if channel:

@@ -22,21 +22,12 @@ def send_slack_message(settings):
     params = dict()
     params['attachments'] = []
 
-    params['attachments'].append({
-    'text': jtext,
-    'username': jusername,
-    'icon_url': jurl,
-    'color': jcolor
-    })
+    params['attachments'].append({'text': jtext,'username': jusername,'icon_url': jurl,'color': jcolor})
 
     with open('data.json', 'w') as outfile:
     	json.dump(params, outfile)
 
     channel = settings.get('channel')
-    if channel:
-        params['channel'] = channel
-    else:
-        print >> sys.stderr, "WARN No channel supplied, using default for webhook"
     url = settings.get('webhook_url')
     body = json.dumps(params)
     print >> sys.stderr, 'DEBUG Calling url="%s" with body=%s' % (url, body)

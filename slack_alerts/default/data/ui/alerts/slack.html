@@ -4,14 +4,19 @@
         <div class="controls">
             <input type="text" name="action.slack.param.channel" id="slack_channel" />
             <span class="help-block">Slack channel to send the message to (Should start with # or @)</span>
-        	<label class="control-label" for="slack_color">Color</label>
-		<select name="action.slack.param.color" id="slack_color">
-  			<option value="">Default</option>
-  			<option value="good">Good</option>
-  			<option value="warning">Warning</option>
-  			<option value="danger">Danger</option>
-		</select>
-	</div>
+        </div>
+        <label class="control-label" for="slack_color">Color</label>
+        <div class="controls">
+            <select name="action.slack.param.color" id="slack_color">
+              <option value="">Default</option>
+              <option value="good">Good</option>
+              <option value="warning">Warning</option>
+              <option value="danger">Danger</option>
+            </select>
+            <span class="help-block">Color of alert in Slack</span>
+        </div>
+
+
     </div>
     <div class="control-group">
         <label class="control-label" for="slack_message">Message</label>

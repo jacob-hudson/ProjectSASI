@@ -4,8 +4,7 @@ dist: trusty
 before_install:
 - sudo apt-get -qq update
 - sudo apt-get install -y git-core curl jq unzip vboot-kernel-utils binutils kpartx
-script: "./build_overwrite.sh"
-script: "./build_clean.sh"
+script: "./build_all.sh"
 deploy:
   provider: releases
   api_key:

@@ -2,4 +2,4 @@
 
 set -eufo pipefail
 
-tar -cvzf slack.tgz slack_alerts/
+tar -cvzf slack_clean.tgz sai/

@@ -9,8 +9,9 @@ deploy:
   provider: releases
   api_key:
     secure: U05FdHq/K3PLGrJZG1EczWacM1r2mRBKRPWc/uSa86JoGo2KT1JxclEaoiVFGdP5fxufZfVLOiQKLFJVBlrz+8Ht5rC3XG/vRNWUpprkxo3jUgkCCjzauQTYoGuKg5U7Oy8lRnWIGPYdUYAYMwdaEV3tlqia1885/8UP6n15nYBguKLBF9BpI9CF3ngjMio1jC/ll/ig1pT2bCbYr5kuRmNCJMd9He4b+PF9Rov33ECzFSCLuBJCiZNYDaDZUHW0CESecTD6X3lKpCMzAz97ZDArR7UvJBMlz3Cntk0u6MsEC8k3rtwcf09pSzBlM6R3ehWQLrSg+kRh44QFJm9qsJULb6RTNI15tgmD/JtrWQA+vVqwcZZ5s/Ef+BU4x8UpT+q5mRt4QAKAwKI97TSvGn50MLBJjBaX5LUYBILTtTO6PHMeKyr5LCesLHIwtj33QouLnB0TBk/vEktBO7zmv5AOdgAU+3t/qKVOnFGZRoouS/LSH3VUZ+qaeB1N1VyVPoxf/d3f2O0xttMWzKdX8SYcZ/2qoC105Bl09SrSVCr/r4LwPSdGjJC+2/aVAahbLa2ChC0HJmZDBzmkUkSltb01i3u3p/1KfLio8L+ReRDWVhVMVCmFrQTL73jGaqh9IZqgp5plLTm7T8f+5uNkPYapDyQa+zE1SeodbXmfB+M=
-  file: slack_overwrite.tgz
-  file: slack_clean.tgz
+  file:
+      - "slack_overwrite.tgz"
+      - "slack_clean.tgz"
   skip_cleanup: true
   on:
     tags: true

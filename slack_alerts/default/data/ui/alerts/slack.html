@@ -21,8 +21,13 @@
           <input type="text" name="action.slack.param.color" id="slack_color" />
           <span class="help-block">Supports RGB syntax, include the # (eg #ff00dd)</span>
         </div>
-
-
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="slack_author">Alert Owner</label>
+        <div class="controls">
+          <input type="text" name="action.slack.param.author" id="slack_author"/>
+          <span class="help-block">The person/group that manges the alert (will not be notifed when the alert fires)</span>
+        </div>
     </div>
     <div class="control-group">
         <label class="control-label" for="slack_message">Message</label>

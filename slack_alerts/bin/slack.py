@@ -16,8 +16,8 @@ def decode_all_matching_urls(match):
 def send_slack_message(settings):
     params = dict()
     params['attachments'] = []
-
-    params['attachments'].append({'text': decode_all_urls(settings.get('message')),'username': settings.get('from_user', 'Splunk'),'icon_url': settings.get('from_user_icon'),'color': settings.get('color')})
+    author = "Alert managed by: " + settings.get('author')
+    params['attachments'].append({'text': decode_all_urls(settings.get('message')),'username': settings.get('from_user', 'Splunk'),'icon_url': settings.get('from_user_icon'),'color': settings.get('color'),'author_name': author})
 
     with open('data.json', 'w') as outfile:
     	json.dump(params, outfile)

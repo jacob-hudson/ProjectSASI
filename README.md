@@ -13,6 +13,7 @@ Splunk Alerts for Slack - Improved
 
 ## Install
 - `Install From File`in App Settings (App is not on SplunkBase yet)
+- NOTE:  A restart is *not* needed after installing or upgrading this app
 
 ## Example Output
 ![Example Slack Alerts](https://github.com/jacob-hudson/ProjectSASI/blob/master/data/img/example.png?raw=true "Example Slack Alerts")

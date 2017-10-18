@@ -3,8 +3,15 @@
 import os
 import re
 
-def traverse_dirs(cwd):
+def update_file(filename):
+    return
 
+def traverse_dirs(cwd):
+    for root, directories, filenames in os.walk('.'):
+        # for directory in directories:
+        #     print os.path.join(root, directory), " is a dir"
+        for filename in filenames:
+             print os.path.join(root,filename), " is a file"
 
 def main():
 

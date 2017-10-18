@@ -4,6 +4,20 @@ import os
 import re
 
 def update_file(filename):
+
+    f = open(filename, 'r')
+
+    content = f.read()
+    f.close()
+    f = open(filename, 'w')
+
+    content = re.sub('id = sai','id = slack', content)
+    content = re.sub('[sai]','[slack]', content)
+    content = re.sub('action.sai','action.slack', content)
+
+    f.write(content)
+    f.close()
+
     return
 
 def traverse_dirs(cwd):
@@ -11,14 +25,9 @@ def traverse_dirs(cwd):
         # for directory in directories:
         #     print os.path.join(root, directory), " is a dir"
         for filename in filenames:
-             print os.path.join(root,filename), " is a file"
+             update_file(filename)
 
 def main():
-
-    # regexes
-    heading = re.compile('[sai]')
-    id = re.compile ('id = sai')
-    html = re.compile ('action.sai')
 
     traverse_dirs('.')
 

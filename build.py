@@ -21,9 +21,7 @@ def update_file(filename):
     return
 
 def traverse_dirs(cwd):
-    for root, directories, filenames in os.walk('.'):
-        # for directory in directories:
-        #     print os.path.join(root, directory), " is a dir"
+    for _, _, filenames in os.walk('.'):
         for filename in filenames:
              update_file(filename)
 

@@ -21,12 +21,16 @@ def update_file(filename):
     return
 
 def traverse_dirs(cwd):
-    for _, _, filenames in os.walk('.'):
+    excluded_files = ['build.py', 'build_all.sh', '.travis.yml', 'README.md']
+    for root, _, filenames in os.walk('.'):
         for filename in filenames:
-             update_file(filename)
+            if filename in excluded_files or os.path.join(root,filename).split('/')[1] == ".git":
+                continue
+            else:
+                print os.path.join(root,filename).split('/')[1]
+                update_file(os.path.join(root,filename))
 
 def main():
-
     traverse_dirs('.')
 
 

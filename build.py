@@ -27,7 +27,6 @@ def traverse_dirs(cwd):
             if filename in excluded_files or os.path.join(root,filename).split('/')[1] == ".git":
                 continue
             else:
-                print os.path.join(root,filename).split('/')[1]
                 update_file(os.path.join(root,filename))
 
 def main():

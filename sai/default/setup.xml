@@ -2,7 +2,6 @@
     <block title="Slack Alert Action">
         <text>Configure the Slack API </text>
     </block>
-
     <block title="Server" endpoint="admin/alert_actions" entity="sai">
         <input field="param.webhook_url">
             <label>Webhook URL</label>
@@ -14,5 +13,4 @@
           See <a href="https://api.slack.com/incoming-webhooks">Incoming Webhooks Docs</a> for details.
         ]]></text>
     </block>
-
 </setup>

@@ -1,4 +1,5 @@
-import sys, json
+import sys
+import json
 import urllib2
 import re
 
@@ -18,6 +19,19 @@ def send_slack_message(settings):
     params['attachments'] = []
     author = "Alert managed by: " + settings.get('author')
     params['attachments'].append({'text': decode_all_urls(settings.get('message')),'username': settings.get('from_user', 'Splunk'),'icon_url': settings.get('from_user_icon'),'color': settings.get('color'),'author_name': author})
+
+    params['attachments']['fields'] = []
+
+    params['attachments']['fields'].append({
+                    "title": "Expected",
+                    "value": settings.get('expected'),
+                    "short": true
+                },
+                {
+                    "title": "Actual",
+                    "value": settings.get('actual'),
+                    "short": true
+                })
 
     with open('data.json', 'w') as outfile:
     	json.dump(params, outfile)

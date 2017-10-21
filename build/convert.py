@@ -6,12 +6,14 @@ import re
 def update_file(filename):
 
     print filename
-    # f = open(filename, 'r')
-    #
-    # content = f.read()
-    # f.close()
+    f = open(filename, 'r')
+
+    content = f.read()
+    f.close()
     # f = open(filename, 'w')
-    #
+    if filename == '../bin/sai.py':
+        os.rename('../bin/sai.py','../bin/slack.py')
+
     # content = re.sub('id = sai','id = slack', content)
     # content = re.sub('[sai]','[slack]', content)
     # content = re.sub('action.sai','action.slack', content)
@@ -23,7 +25,7 @@ def update_file(filename):
 
 def traverse_dirs(cwd):
     excluded_files = ['build.py', 'build_all.sh', '.travis.yml', 'README.md']
-    for root, _, filenames in os.walk('.'):
+    for root, _, filenames in os.walk('../'):
         for filename in filenames:
             if filename in excluded_files or os.path.join(root,filename).split('/')[1] == ".git":
                 continue

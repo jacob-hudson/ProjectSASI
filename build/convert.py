@@ -41,7 +41,7 @@ def traverse_dirs(cwd):
 
 def main():
     traverse_dirs('.')
-    os.rename('sai','slack')
+    os.rename('sai','slack_alerts')
 
 
 if __name__ == '__main__':

@@ -18,20 +18,8 @@ def send_slack_message(settings):
     params = dict()
     params['attachments'] = []
     author = "Alert managed by: " + settings.get('author')
-    params['attachments'].append({'text': decode_all_urls(settings.get('message')),'username': settings.get('from_user', 'Splunk'),'icon_url': settings.get('from_user_icon'),'color': settings.get('color'),'author_name': author})
-
-    params['attachments']['fields'] = []
-
-    params['attachments']['fields'].append({
-                    "title": "Expected",
-                    "value": settings.get('expected'),
-                    "short": true
-                },
-                {
-                    "title": "Actual",
-                    "value": settings.get('actual'),
-                    "short": true
-                })
+    params['attachments'].append({'text': decode_all_urls(settings.get('message')),'username': settings.get('from_user', 'Splunk'),'icon_url': settings.get('from_user_icon'),'color': settings.get('color'),'author_name': author, 'fields': [{
+    'title': "Expected",'value': settings.get('expected'),'short': True},{'title': "Actual",'value': settings.get('actual'),'short': True}]})
 
     with open('data.json', 'w') as outfile:
     	json.dump(params, outfile)

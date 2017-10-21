@@ -1,11 +1,14 @@
 # ProjectSASI
+
+
+[![Build Status](https://travis-ci.org/jacob-hudson/ProjectSASI.svg?branch=master)](https://travis-ci.org/jacob-hudson/ProjectSASI)
+
 Splunk Alerts for Slack - Improved
 Includes:
 - Better formatting
 - Easy standardization
 - Automatic screenshtos of visualizations
 
-[![Build Status](https://travis-ci.org/jacob-hudson/ProjectSASI.svg?branch=master)](https://travis-ci.org/jacob-hudson/ProjectSASI)
 
 ## Build
 ### Pre-Built Packages

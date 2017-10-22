@@ -14,17 +14,23 @@ def decode_all_matching_urls(match):
     match = match.group()
     return url_decode(match)
 
+def screenshot():
+    # TODO: create a bot user and use that uuser for the file API
+    return
+
 def format_fields(settings):
     f1 = {'title': "Expected",'value': settings.get('expected'),'short': True}
     f2 = {'title': "Actual",'value': settings.get('actual'),'short': True}
-
-    return f1,f2
+    f3 = {'title': "Asignee",'value': settings.get('asignee'),'short': True}
+    f4 = {'title': "Links",'value': settings.get('links'),'short': True}
+    return f1,f2,f3,f4
 
 def send_slack_message(settings):
     params = dict()
     params['attachments'] = []
     author = "Alert managed by: " + settings.get('author')
     params['attachments'].append({'text': decode_all_urls(settings.get('message')),'username': settings.get('from_user', 'Splunk'),'icon_url': settings.get('from_user_icon'),'color': settings.get('color'),'author_name': author, 'fields': format_fields(settings)})
+
 
 
     with open('data.json', 'w') as outfile:

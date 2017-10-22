@@ -22,7 +22,32 @@ def format_fields(settings):
     f1 = {'title': "Expected",'value': settings.get('expected'),'short': True}
     f2 = {'title': "Actual",'value': settings.get('actual'),'short': True}
     f3 = {'title': "Asignee",'value': settings.get('asignee'),'short': True}
-    f4 = {'title': "Links",'value': settings.get('links'),'short': True}
+
+    links = []
+    all_links = ""
+
+    if settings.get('results') != None:
+        links.insert(0,'<' + str(settings.get('results')) + '|Results>')
+
+    if settings.get('dashboard') != None:
+        links.insert(1,'<' + str(settings.get('dashboard')) + '|Dashboard>')
+
+    if settings.get('trend') != None:
+        links.insert(2,'<' + str(settings.get('trend')) + '|Trend>')
+
+    if settings.get('playbook') != None:
+        links.insert(3,'<' + str(settings.get('playbook')) + '|Playbook>')
+
+    for link in links:
+        if not link:
+            continue
+        else:
+            if all_links == "":
+                all_links = link + ' '
+            else:
+                all_links = all_links + '| ' + link + ' '
+
+    f4 = {'title': "Links",'value': all_links,'short': True}
     return f1,f2,f3,f4
 
 def send_slack_message(settings):

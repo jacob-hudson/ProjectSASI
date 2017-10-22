@@ -9,6 +9,9 @@ Includes:
 - Easy standardization
 - Automatic screenshtos of visualizations
 
+## REquirements
+- `Slack Webhook Toke` - For all standard alert features
+- `Slack API Token` - For screenshots
 
 ## Build
 ### Pre-Built Packages

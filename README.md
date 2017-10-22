@@ -10,7 +10,7 @@ Includes:
 - Automatic screenshtos of visualizations
 
 ## Requirements
-- `Slack Webhook Toke` - For all standard alert features
+- `Slack Webhook Token` - For all standard alert features
 - `Slack API Token` - For screenshots
 
 ## Build

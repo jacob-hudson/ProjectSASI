@@ -19,7 +19,7 @@ Includes:
 
 ### Manual Build
 - Download/Clone Repo
-- Run `./build.sh`
+- Run `./build/build.sh`
 
 ## Install
 - `Install From File`in App Settings (App is not on SplunkBase yet)

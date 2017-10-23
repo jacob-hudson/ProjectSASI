@@ -54,7 +54,7 @@ def send_slack_message(settings):
     params = dict()
     params['attachments'] = []
     author = "Alert managed by: " + settings.get('author')
-    params['attachments'].append({'text': decode_all_urls(settings.get('message')),'username': settings.get('from_user', 'Splunk'),'icon_url': settings.get('from_user_icon'),'color': settings.get('color'),'author_name': author, 'fields': format_fields(settings)})
+    params['attachments'].append({'text': decode_all_urls(settings.get('message')),'pretext': settings.get('emoji') + settings.get('heading'),'username': settings.get('from_user', 'Splunk'),'icon_url': settings.get('from_user_icon'),'color': settings.get('color'),'author_name': author, 'fields': format_fields(settings)})
 
 
 

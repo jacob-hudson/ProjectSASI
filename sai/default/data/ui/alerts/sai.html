@@ -22,6 +22,21 @@
           <span class="help-block">Supports RGB syntax, include the # (eg #ff00dd)</span>
         </div>
     </div>
+    <label class="control-label" for="slack_heading">Heading</label>
+    <div class="controls">
+        <input type="text" name="action.sai.param.heading" id="slack_heading" />
+        <span class="help-block">Heading appers above the colored bar</span>
+    </div>
+    <label class="control-label" for="slack_emoji">Header Emoji</label>
+    <div class="controls">
+        <select name="action.sai.param.emoji" id="slack_emoji">
+          <option value="">Default</option>
+          <option value=":white_check_mark:">Good</option>
+          <option value=":warning:">Warning</option>
+          <option value=":red_circle:">Danger</option>
+        </select>
+      <span class="help-block">Emoji of alert in Slack</span>
+    </div>
     <div class="control-group">
         <label class="control-label" for="slack_author">Alert Owner</label>
         <div class="controls">

@@ -2,6 +2,7 @@ import sys
 import json
 import urllib2
 import re
+import csv
 
 def url_decode(urlstring):
     return urllib2.unquote(urlstring).decode('utf8')

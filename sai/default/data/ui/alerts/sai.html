@@ -1,107 +1,115 @@
 <form class="form-horizontal form-complex">
-    <div class="control-group">
-        <label class="control-label" for="slack_chanel">Channel</label>
-        <div class="controls">
-            <input type="text" name="action.sai.param.channel" id="slack_channel" />
-            <span class="help-block">Slack channel or DM (Include # or @)</span>
-        </div>
-        <label class="control-label" for="slack_color">Color</label>
-        <div class="controls">
-            <select name="action.sai.param.color" id="slack_color">
-              <option value="">Default</option>
-              <option value="good">Good</option>
-              <option value="warning">Warning</option>
-              <option value="danger">Danger</option>
-              <option value="other">Other (Use Text Box)</option>
-            </select>
-          <span class="help-block">Color of alert in Slack</span>
-        </div>
-        <label class="control-label" for="slack_color">Custom Color</label>
-        <div class="controls">
-          <input type="text" name="action.sai.param.color" id="slack_color"/>
-          <span class="help-block">Supports RGB syntax, include the # (eg #ff00dd)</span>
-        </div>
+  <div class="control-group">
+    <label class="control-label" for="slack_chanel">Channel</label>
+    <div class="controls">
+      <input type="text" name="action.sai.param.channel" id="slack_channel" />
+      <span class="help-block">Slack channel or DM (Include # or @)</span>
     </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="slack_color">Color</label>
+    <div class="controls">
+      <select name="action.sai.param.color" id="slack_color">
+        <option value="">Default</option>
+        <option value="good">Good</option>
+        <option value="warning">Warning</option>
+        <option value="danger">Danger</option>
+        <option value="other">Other (Use Text Box)</option>
+      </select>
+      <span class="help-block">Color of alert in Slack</span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="slack_color">Custom Color</label>
+    <div class="controls">
+      <input type="text" name="action.sai.param.color" id="slack_color"/>
+      <span class="help-block">Supports RGB syntax, include the # (eg #ff00dd)</span>
+    </div>
+  </div>
+  <div class="control-group">
     <label class="control-label" for="slack_heading">Heading</label>
     <div class="controls">
-        <input type="text" name="action.sai.param.heading" id="slack_heading" />
-        <span class="help-block">Heading appers above the colored bar</span>
+      <input type="text" name="action.sai.param.heading" id="slack_heading" />
+      <span class="help-block">Heading appers above the colored bar</span>
     </div>
+  </div>
+  <div class="control-group">
     <label class="control-label" for="slack_emoji">Header Emoji</label>
     <div class="controls">
-        <select name="action.sai.param.emoji" id="slack_emoji">
-          <option value="">Default</option>
-          <option value=":white_check_mark:">Good</option>
-          <option value=":warning:">Warning</option>
-          <option value=":red_circle:">Danger</option>
-        </select>
+      <select name="action.sai.param.emoji" id="slack_emoji">
+        <option value="">Default</option>
+        <option value=":white_check_mark:">Good</option>
+        <option value=":warning:">Warning</option>
+        <option value=":red_circle:">Danger</option>
+      </select>
       <span class="help-block">Emoji of alert in Slack</span>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="slack_author">Alert Owner</label>
-        <div class="controls">
-          <input type="text" name="action.sai.param.author" id="slack_author"/>
-          <span class="help-block">The person/group that manges the alert (will not be notifed when the alert fires)</span>
-        </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="slack_author">Alert Owner</label>
+    <div class="controls">
+      <input type="text" name="action.sai.param.author" id="slack_author"/>
+      <span class="help-block">The person/group that manges the alert (will not be notifed when the alert fires)</span>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="slack_expected">Expect Result</label>
-        <div class="controls">
-          <input type="text" name="action.sai.param.expected" id="slack_expected"/>
-          <span class="help-block">Expected result</span>
-        </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="slack_expected">Expect Result</label>
+    <div class="controls">
+      <input type="text" name="action.sai.param.expected" id="slack_expected"/>
+      <span class="help-block">Expected result</span>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="slack_actual">Actual Result</label>
-        <div class="controls">
-          <input type="text" name="action.sai.param.actual" id="slack_actual"/>
-          <span class="help-block">Actual result</span>
-        </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="slack_actual">Actual Result</label>
+    <div class="controls">
+      <input type="text" name="action.sai.param.actual" id="slack_actual"/>
+      <span class="help-block">Actual result</span>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="slack_actual">Asignee</label>
-        <div class="controls">
-          <input type="text" name="action.sai.param.asignee" id="slack_asignee"/>
-          <span class="help-block">Contact responsible for fixing the issue</span>
-        </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="slack_actual">Asignee</label>
+    <div class="controls">
+      <input type="text" name="action.sai.param.asignee" id="slack_asignee"/>
+      <span class="help-block">Contact responsible for fixing the issue</span>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="slack_results">Results Link</label>
-        <div class="controls">
-          <input type="text" name="action.sai.param.results" id="slack_results"/>
-          <span class="help-block">Results Link</span>
-        </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="slack_results">Results Link</label>
+    <div class="controls">
+      <input type="text" name="action.sai.param.results" id="slack_results"/>
+      <span class="help-block">Results Link</span>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="slack_dashboard">Dashboard Link</label>
-        <div class="controls">
-          <input type="text" name="action.sai.param.dashboard" id="slack_dashboard"/>
-          <span class="help-block">Dashboard Link</span>
-        </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="slack_dashboard">Dashboard Link</label>
+    <div class="controls">
+      <input type="text" name="action.sai.param.dashboard" id="slack_dashboard"/>
+      <span class="help-block">Dashboard Link</span>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="slack_trend">Alert Trend Link</label>
-        <div class="controls">
-          <input type="text" name="action.sai.param.trend" id="slack_trend"/>
-          <span class="help-block">Alert Trend Link</span>
-        </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="slack_trend">Alert Trend Link</label>
+    <div class="controls">
+      <input type="text" name="action.sai.param.trend" id="slack_trend"/>
+      <span class="help-block">Alert Trend Link</span>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="slack_dashboard">Playbook Link</label>
-        <div class="controls">
-          <input type="text" name="action.sai.param.playbook" id="slack_playbook"/>
-          <span class="help-block">Playbook Link</span>
-        </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="slack_dashboard">Playbook Link</label>
+    <div class="controls">
+      <input type="text" name="action.sai.param.playbook" id="slack_playbook"/>
+      <span class="help-block">Playbook Link</span>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="slack_message">Message</label>
-        <div class="controls">
-            <textarea name="action.sai.param.message" id="slack_message" style="height: 120px;"></textarea>
-            <span class="help-block">
-                Message for the channel, it can include tokens from to include search results
-                <a href="{{SPLUNKWEB_URL_PREFIX}}/help?location=learnmore.alert.action.tokens" target="_blank"
-                   title="Splunk help">Learn More <i class="icon-external"></i></a>
-            </span>
-        </div>
-    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="slack_message">Message</label>
+    <div class="controls">
+      <textarea name="action.sai.param.message" id="slack_message" style="height: 120px;"></textarea>
+      <span class="help-block">
+        Message for the channel, it can include tokens from to include search results
+        <a href="{{SPLUNKWEB_URL_PREFIX}}/help?location=learnmore.alert.action.tokens" target="_blank"
+       title="Splunk help">Learn More <i class="icon-external"></i></a>
+     </span>
+   </div>
+ </div>
 </form>

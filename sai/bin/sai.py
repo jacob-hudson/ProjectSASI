@@ -63,8 +63,6 @@ def send_slack_message(settings):
     author = "Alert managed by: " + settings.get('author')
     params['attachments'].append({'text': decode_all_urls(settings.get('message')),'pretext': heading,'username': settings.get('from_user', 'Splunk'),'icon_url': settings.get('from_user_icon'),'color': settings.get('color'),'author_name': author, 'fields': format_fields(settings)})
 
-
-
     with open('data.json', 'w') as outfile:
     	json.dump(params, outfile)
 

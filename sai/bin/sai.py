@@ -22,7 +22,7 @@ def screenshot():
 def format_fields(settings):
     f1 = {'title': "Expected",'value': settings.get('expected'),'short': True}
     f2 = {'title': "Actual",'value': settings.get('actual'),'short': True}
-    f3 = {'title': "Asignee",'value': settings.get('asignee'),'short': True}
+    f3 = {'title': "Assignee",'value': settings.get('asignee'),'short': True}
 
     links = []
     all_links = ""

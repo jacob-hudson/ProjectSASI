@@ -22,7 +22,7 @@ Includes:
 - Run `./build/build.sh`
 
 ## Install
-- `Install From File`in App Settings (App is not on SplunkBase yet)
+- `Install From File` in App Settings (App is not on SplunkBase yet)
 - NOTE:  A restart is *not* needed after installing or upgrading this app
 
 ## Example Output

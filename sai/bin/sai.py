@@ -20,9 +20,15 @@ def screenshot():
     return
 
 def format_fields(settings):
+
+    if settings.get('assignee_ping') == "1":
+        assignee = '<' + str(settings.get('assignee')) + '>'
+    else:
+        assignee = str(settings.get('assignee'))
+
     f1 = {'title': "Expected",'value': settings.get('expected'),'short': True}
     f2 = {'title': "Actual",'value': settings.get('actual'),'short': True}
-    f3 = {'title': "Assignee",'value': settings.get('asignee'),'short': True}
+    f3 = {'title': "Assignee",'value': assignee,'short': True}
 
     links = []
     all_links = ""
@@ -55,7 +61,7 @@ def send_slack_message(settings):
     params = dict()
     params['attachments'] = []
     author = "Alert managed by: " + settings.get('author')
-    params['attachments'].append({'text': decode_all_urls(settings.get('message')),'pretext': settings.get('emoji') + settings.get('heading'),'username': settings.get('from_user', 'Splunk'),'icon_url': settings.get('from_user_icon'),'color': settings.get('color'),'author_name': author, 'fields': format_fields(settings)})
+    params['attachments'].append({'text': decode_all_urls(settings.get('message')),'pretext': heading,'username': settings.get('from_user', 'Splunk'),'icon_url': settings.get('from_user_icon'),'color': settings.get('color'),'author_name': author, 'fields': format_fields(settings)})
 
 
 

@@ -34,7 +34,15 @@
     </div>
   </div>
   <div class="control-group">
-    <label class="control-label" for="slack_emoji">Header Emoji</label>
+    <div class="controls">
+        <label class="checkbox" for="slack_heading_bold">
+            <input type="checkbox" name="action.sai.param.heading_bold" id="slack_heading_bold" value="1"/>
+            Bold headings
+        </label>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="slack_emoji">Heading Emoji</label>
     <div class="controls">
       <select name="action.sai.param.emoji" id="slack_emoji">
         <option value="">Default</option>
@@ -78,6 +86,14 @@
     <div class="controls">
       <input type="text" name="action.sai.param.assignee" id="slack_assignee"/>
       <span class="help-block">Contact responsible for fixing the issue</span>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+        <label class="checkbox" for="slack_assignee_ping">
+            <input type="checkbox" name="action.sai.param.assignee_ping" id="slack_assignee_ping" value="1"/>
+            Ping
+        </label>
     </div>
   </div>
   <div class="control-group">

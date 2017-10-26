@@ -67,6 +67,10 @@ def send_slack_message(settings):
     	json.dump(params, outfile)
 
     channel = settings.get('channel')
+    if channel:
+        params['channel'] = channel
+    else:
+        print >> sys.stderr, "WARN No channel supplied, using default for webhook"
     url = settings.get('webhook_url')
     body = json.dumps(params)
     print >> sys.stderr, 'DEBUG Calling url="%s" with body=%s' % (url, body)

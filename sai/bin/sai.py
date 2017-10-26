@@ -3,6 +3,7 @@ import json
 import urllib2
 import re
 import csv
+import gzip
 
 def url_decode(urlstring):
     return urllib2.unquote(urlstring).decode('utf8')
@@ -14,6 +15,9 @@ def decode_all_urls(messagestring):
 def decode_all_matching_urls(match):
     match = match.group()
     return url_decode(match)
+
+def read_csv():
+    csv =gzip.open(file)
 
 def screenshot():
     # TODO: create a bot user and use that uuser for the file API
@@ -57,7 +61,7 @@ def format_fields(settings):
     f4 = {'title': "Links",'value': all_links,'short': True}
     return f1,f2,f3,f4
 
-def send_slack_message(settings):
+def send_slack_message(settings, global_settings):
     params = dict()
     params['text'] = settings.get('heading')
     params['username'] = settings.get('from_user', 'Splunk')
@@ -65,8 +69,10 @@ def send_slack_message(settings):
 
     params['attachments'] = []
     author = "Alert managed by: " + settings.get('author')
+    message = str(settings.get('message'))
+    message = message.replace('\\n', '\n')
 
-    params['attachments'].append({'text': decode_all_urls(settings.get('message')),'color': settings.get('color'),'author_name': author,'fields': format_fields(settings)})
+    params['attachments'].append({'text': message,'color': settings.get('color'),'author_name': author,'fields': format_fields(settings)})
 
     with open('data.json', 'w') as outfile:
     	json.dump(params, outfile)
@@ -94,6 +100,7 @@ def send_slack_message(settings):
 if __name__ == '__main__':
     if len(sys.argv) > 1 and sys.argv[1] == "--execute":
         payload = json.loads(sys.stdin.read())
+        settings = payload
         config = payload.get('configuration')
-        if not send_slack_message(config):
+        if not send_slack_message(config, settings):
             print >> sys.stderr, "FATAL Sending the slack message failed"

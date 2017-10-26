@@ -59,9 +59,13 @@ def format_fields(settings):
 
 def send_slack_message(settings):
     params = dict()
+    params['text'] = decode_all_urls(settings.get('message'))
+    params['username'] = settings.get('from_user', 'Splunk')
+    params['icon_url'] = settings.get('from_user_icon')
+
     params['attachments'] = []
     author = "Alert managed by: " + settings.get('author')
-    params['attachments'].append({'text': decode_all_urls(settings.get('message')),'pretext': settings.get('heading'),'username': settings.get('from_user', 'Splunk'),'icon_url': settings.get('from_user_icon'),'color': settings.get('color'),'author_name': author, 'fields': format_fields(settings)})
+    params['attachments'].append({'pretext': settings.get('heading'),'username': settings.get('from_user', 'Splunk'),'icon_url': settings.get('from_user_icon'),'color': settings.get('color'),'author_name': author, 'fields': format_fields(settings)})
 
     with open('data.json', 'w') as outfile:
     	json.dump(params, outfile)

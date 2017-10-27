@@ -16,8 +16,8 @@ def decode_all_matching_urls(match):
     match = match.group()
     return url_decode(match)
 
-def read_csv():
-    csv =gzip.open(file)
+# def read_csv():
+#     csv =gzip.open(file)
 
 def screenshot():
     # TODO: create a bot user and use that uuser for the file API
@@ -66,6 +66,7 @@ def send_slack_message(settings, global_settings):
     params['text'] = settings.get('heading')
     params['username'] = settings.get('from_user', 'Splunk')
     params['icon_url'] = settings.get('from_user_icon')
+    parmas['mrkdwn'] = True
 
     params['attachments'] = []
     author = "Alert managed by: " + settings.get('author')

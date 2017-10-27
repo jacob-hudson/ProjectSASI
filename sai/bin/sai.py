@@ -16,8 +16,14 @@ def decode_all_matching_urls(match):
     match = match.group()
     return url_decode(match)
 
-# def read_csv():
-#     csv =gzip.open(file)
+def read_csv(file):
+    output = []
+    with gzip.open(file) as f:
+        reader = csv.reader(f)
+        for row in reader:
+            output.append(row)
+
+    return output
 
 def screenshot():
     # TODO: create a bot user and use that uuser for the file API
@@ -66,12 +72,20 @@ def send_slack_message(settings, global_settings):
     params['text'] = settings.get('heading')
     params['username'] = settings.get('from_user', 'Splunk')
     params['icon_url'] = settings.get('from_user_icon')
-    parmas['mrkdwn'] = True
+    params['mrkdwn'] = True
 
     params['attachments'] = []
     author = "Alert managed by: " + settings.get('author')
-    message = str(settings.get('message'))
-    message = message.replace('\\n', '\n')
+
+    if settings.get('csv') == "1":
+        csv = read_csv(global_settings['results_file'])
+        message = str(csv)
+        message = message.replace('], [', '\n')
+        message = message.replace('[[', '')
+        message = message.replace(']]', '')
+    else:
+        message = str(settings.get('message'))
+        message = message.replace('\\n', '\n')
 
     params['attachments'].append({'text': message,'color': settings.get('color'),'author_name': author,'fields': format_fields(settings)})
 

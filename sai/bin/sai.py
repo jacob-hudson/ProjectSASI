@@ -17,11 +17,27 @@ def decode_all_matching_urls(match):
     return url_decode(match)
 
 def read_csv(file):
+    formatting = []
     output = []
+    style = ""
     with gzip.open(file) as f:
         reader = csv.reader(f)
         for row in reader:
-            formatted_row = row[:(len(row)/2)]
+            for i, item in enumerate(row[:(len(row)/2)]):
+                if (len(formatting) <= i): #inits the list
+                    formatting.append(len(item) + 1)
+                elif (formatting[i] < len(item) + 1):
+                    formatting[i] = len(item) + 1
+                else:
+                    continue
+
+        for value in formatting:
+            style = style + "{:<" + str(value) + "}"
+
+    with gzip.open(file) as f:
+        reader = csv.reader(f)
+        for row in reader:
+            formatted_row = (style.format(*row))
             output.append(formatted_row)
 
     return output
@@ -108,7 +124,6 @@ def send_slack_message(settings, global_settings):
     except urllib2.HTTPError, e:
         print >> sys.stderr, "ERROR Error sending message: %s" % e
         return False
-
 
 if __name__ == '__main__':
     if len(sys.argv) > 1 and sys.argv[1] == "--execute":

@@ -109,7 +109,7 @@ def send_slack_message(settings, global_settings):
         message = str(settings.get('message'))
         message = message.replace('\\n', '\n')
 
-    params['attachments'].append({'text': message,'color': settings.get('color'),'author_name': author,'fields': format_fields(settings)})
+    params['attachments'].append({'text': message,'color': settings.get('color'),'footer': author,'fields': format_fields(settings),"mrkdwn_in": ["text"]})
 
     with open('data.json', 'w') as outfile:
     	json.dump(params, outfile)

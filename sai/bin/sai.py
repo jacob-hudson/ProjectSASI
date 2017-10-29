@@ -21,7 +21,8 @@ def read_csv(file):
     with gzip.open(file) as f:
         reader = csv.reader(f)
         for row in reader:
-            output.append(row)
+            formatted_row = row[:(len(row)/2)]
+            output.append(formatted_row)
 
     return output
 
@@ -79,10 +80,7 @@ def send_slack_message(settings, global_settings):
 
     if settings.get('csv') == "1":
         csv = read_csv(global_settings['results_file'])
-        message = str(csv)
-        message = message.replace('], [', '\n')
-        message = message.replace('[[', '')
-        message = message.replace(']]', '')
+        message = str(csv).replace("'], ['", "\n").replace("[['", "").replace("']]", "").replace("', '", " ")
     else:
         message = str(settings.get('message'))
         message = message.replace('\\n', '\n')

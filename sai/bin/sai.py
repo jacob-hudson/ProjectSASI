@@ -86,7 +86,12 @@ def format_fields(settings):
 
 def send_slack_message(settings, global_settings):
     params = dict()
-    params['text'] = settings.get('heading')
+
+    if settings.get('emoji') != "":
+        params['text'] = settings.get('emoji') + " " + settings.get('heading')
+    else:
+        params['text'] = settings.get('heading')
+
     params['username'] = settings.get('from_user', 'Splunk')
     params['icon_url'] = settings.get('from_user_icon')
     params['mrkdwn'] = True

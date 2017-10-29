@@ -18,7 +18,7 @@ Includes:
 - [here](https://github.com/jacob-hudson/ProjectSASI/releases)
 
 ### Manual Build
-- Download/Clone Repo
+- Download/Clone Repo (please ensure you are using a tagged commit)
 - Run `./build/build.sh`
 
 ## Install

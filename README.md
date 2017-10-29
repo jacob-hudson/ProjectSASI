@@ -1,13 +1,12 @@
 # ProjectSASI
 
-
 [![Build Status](https://travis-ci.org/jacob-hudson/ProjectSASI.svg?branch=master)](https://travis-ci.org/jacob-hudson/ProjectSASI)
 
 Splunk Alerts for Slack - Improved
 Includes:
 - Better formatting
 - Easy standardization
-- Automatic screenshtos of visualizations
+- Automatic screenshots of visualizations
 
 ## Requirements
 - `Slack Webhook Token` - For all standard alert features

@@ -96,7 +96,7 @@ def send_slack_message(settings, global_settings):
 
     if settings.get('csv') == "1":
         csv = read_csv(global_settings['results_file'])
-        message = str(csv).replace("'], ['", "\n").replace("[['", "").replace("']]", "").replace("', '", " ")
+        message = str(csv).replace("', '", "\n").replace("['", "").replace("']", "")
     else:
         message = str(settings.get('message'))
         message = message.replace('\\n', '\n')

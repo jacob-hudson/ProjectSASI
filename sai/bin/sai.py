@@ -16,7 +16,7 @@ def decode_all_matching_urls(match):
     match = match.group()
     return url_decode(match)
 
-def read_csv(file):
+def read_csv(file, settings):
     formatting = []
     output = []
     style = ""
@@ -36,7 +36,13 @@ def read_csv(file):
 
     with gzip.open(file) as f:
         reader = csv.reader(f)
-        for row in reader:
+        for i, row in enumerate(reader):
+            # if i == 0 and settings.get('csv_bold') == "1":
+            #     row = '*' + str(row) + '*'
+            #
+            # if i == 0 and settings.get('csv_italic') == "1":
+            #     row = '_' + str(row) + '_'
+
             formatted_row = (style.format(*row))
             output.append(formatted_row)
 
@@ -86,11 +92,18 @@ def format_fields(settings):
 
 def send_slack_message(settings, global_settings):
     params = dict()
+    heading = settings.get('heading')
 
-    if settings.get('emoji') != "":
-        params['text'] = settings.get('emoji') + " " + settings.get('heading')
+    if settings.get('heading_bold') == "1":
+        heading = '*' + heading + '*'
+
+    if settings.get('heading_italic') == "1":
+        heading = '_' + heading + '_'
+
+    if settings.get('emoji') != None:
+        params['text'] = str(settings.get('emoji')) + " " + heading
     else:
-        params['text'] = settings.get('heading')
+        params['text'] = heading
 
     params['username'] = settings.get('from_user', 'Splunk')
     params['icon_url'] = settings.get('from_user_icon')
@@ -100,7 +113,7 @@ def send_slack_message(settings, global_settings):
     author = "Alert managed by: " + settings.get('author')
 
     if settings.get('csv') == "1":
-        csv = read_csv(global_settings['results_file'])
+        csv = read_csv(global_settings['results_file'], settings)
         csv = str(csv).replace("', '", "\n").replace("['", "").replace("']", "")
         text = str(settings.get('message'))
         text = text.replace('\\n', '\n')

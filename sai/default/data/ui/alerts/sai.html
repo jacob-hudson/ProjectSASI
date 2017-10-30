@@ -10,7 +10,7 @@
     <label class="control-label" for="slack_color">Color</label>
     <div class="controls">
       <select name="action.sai.param.color" id="slack_color">
-        <option value="">Default</option>
+        <option value="">None</option>
         <option value="good">Good</option>
         <option value="warning">Warning</option>
         <option value="danger">Danger</option>
@@ -34,13 +34,30 @@
     </div>
   </div>
   <div class="control-group">
+    <div class="controls">
+        <label class="checkbox" for="slack_heading_bold">
+            <input type="checkbox" name="action.sai.param.heading_bold" id="slack_heading_bold" value="1"/>
+            Bold heading
+        </label>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+        <label class="checkbox" for="slack_heading_italic">
+            <input type="checkbox" name="action.sai.param.heading_italic" id="slack_heading_italic" value="1"/>
+            Italize heading
+        </label>
+    </div>
+  </div>
+  <div class="control-group">
     <label class="control-label" for="slack_emoji">Heading Emoji</label>
     <div class="controls">
       <select name="action.sai.param.emoji" id="slack_emoji">
-        <option value="">Default</option>
+        <option value="">None</option>
         <option value=":white_check_mark:">Good</option>
         <option value=":warning:">Warning</option>
         <option value=":red_circle:">Danger</option>
+        <option value="other">Other (Use Text Box)</option>
       </select>
       <span class="help-block">Emoji of alert in Slack</span>
     </div>
@@ -124,6 +141,22 @@
         </label>
     </div>
   </div>
+  <!-- <div class="control-group">
+    <div class="controls">
+        <label class="checkbox" for="slack_csv_bold">
+            <input type="checkbox" name="action.sai.param.csv_bold" id="slack_csv_bold" value="1"/>
+            Bold headings in CSV
+        </label>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+        <label class="checkbox" for="slack_csv_italic">
+            <input type="checkbox" name="action.sai.param.csv_italic" id="slack_csv_italic" value="1"/>
+            Italize headings in CSV
+        </label>
+    </div>
+  </div> -->
   <div class="control-group">
     <label class="control-label" for="slack_message">Message*</label>
     <div class="controls">

@@ -32,7 +32,7 @@ def read_csv(file, settings):
                     continue
 
         for value in formatting:
-            style = style + "{:<" + str(value) + "}"
+            style = style + "{:_<" + str(value) + "}"
 
     with gzip.open(file) as f:
         reader = csv.reader(f)

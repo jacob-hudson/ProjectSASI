@@ -31,20 +31,21 @@ def read_csv(file, settings):
                 else:
                     continue
 
+        last_row = row
         for value in formatting:
-            style = style + "{:_<" + str(value) + "}"
+            style = style + "{:<" + str(value) + "}"
 
     with gzip.open(file) as f:
         reader = csv.reader(f)
         for i, row in enumerate(reader):
-            # if i == 0 and settings.get('csv_bold') == "1":
-            #     row = '*' + str(row) + '*'
-            #
-            # if i == 0 and settings.get('csv_italic') == "1":
-            #     row = '_' + str(row) + '_'
+            if i == 0:
+                output.append("```\n")
 
             formatted_row = (style.format(*row))
             output.append(formatted_row)
+
+            if i == last_row:
+                output.append("\n```")
 
     return output
 

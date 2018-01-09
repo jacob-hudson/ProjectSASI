@@ -31,18 +31,19 @@ def read_csv(file, settings):
                 else:
                     continue
 
-        last_row = row
         for value in formatting:
             style = style + "{:<" + str(value) + "}"
 
     with gzip.open(file) as f:
         reader = csv.reader(f)
         for i, row in enumerate(reader):
-            output.append("```")
+            if i == 0:
+                output.append("```")
+
             formatted_row = (style.format(*row))
             output.append(formatted_row)
-            output.append("```")
 
+    output.append("```")
     return output
 
 def screenshot():

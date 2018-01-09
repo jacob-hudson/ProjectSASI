@@ -38,14 +38,10 @@ def read_csv(file, settings):
     with gzip.open(file) as f:
         reader = csv.reader(f)
         for i, row in enumerate(reader):
-            if i == 0:
-                output.append("```\n")
-
+            output.append("```")
             formatted_row = (style.format(*row))
             output.append(formatted_row)
-
-            if i == last_row:
-                output.append("\n```")
+            output.append("```")
 
     return output
 

@@ -20,16 +20,21 @@ def read_csv(file, settings):
     formatting = []
     output = []
     style = ""
+    row_len = 0
+    # gets column widths
     with gzip.open(file) as f:
         reader = csv.reader(f)
         for row in reader:
             for i, item in enumerate(row[:(len(row)/2)]):
-                if (len(formatting) <= i): #inits the list
+                if (len(formatting) <= i): # inits the list
                     formatting.append(len(item) + 1)
                 elif (formatting[i] < len(item) + 1):
                     formatting[i] = len(item) + 1
                 else:
                     continue
+
+        for value in formatting:
+            row_len = value + row_len
 
         for value in formatting:
             style = style + "{:<" + str(value) + "}"
@@ -39,6 +44,9 @@ def read_csv(file, settings):
         for i, row in enumerate(reader):
             if i == 0:
                 output.append("```")
+
+            if i == 1 and settings.get("csv_header_break") == "1":
+                output.append("="*row_len)
 
             formatted_row = (style.format(*row))
             output.append(formatted_row)

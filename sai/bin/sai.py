@@ -45,8 +45,13 @@ def read_csv(file, settings):
             if i == 0:
                 output.append("```")
 
+            # horizontal lines
             if i == 1 and settings.get("csv_header_break") == "1":
                 output.append("="*row_len)
+            elif i > 1 and settings.get("csv_h_break") == "1":
+                output.append("-"*row_len)
+            else:
+                pass
 
             formatted_row = (style.format(*row))
             output.append(formatted_row)

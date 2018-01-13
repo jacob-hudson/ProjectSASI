@@ -35,8 +35,6 @@ def read_csv(file, settings):
 
         for value in formatting:
             row_len = value + row_len
-
-        for value in formatting:
             style = style + "{:<" + str(value) + "}"
 
     with gzip.open(file) as f:

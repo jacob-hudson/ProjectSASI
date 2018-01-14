@@ -16,6 +16,13 @@ def decode_all_matching_urls(match):
     match = match.group()
     return url_decode(match)
 
+def write_csv(i, row):
+    if i == 0:
+        row.insert(0, 'row')
+    else:
+        row.insert(0, str(i))
+    return row
+
 def read_csv(file, settings):
     formatting = []
     output = []
@@ -24,7 +31,10 @@ def read_csv(file, settings):
     # gets column widths
     with gzip.open(file) as f:
         reader = csv.reader(f)
-        for row in reader:
+        for i, row in enumerate(reader):
+            if settings.get("csv_row_numbers") == "1":
+                row = write_csv(i, row)
+
             for i, item in enumerate(row[:(len(row)/2)]):
                 if (len(formatting) <= i): # inits the list
                     formatting.append(len(item) + 1)
@@ -40,6 +50,9 @@ def read_csv(file, settings):
     with gzip.open(file) as f:
         reader = csv.reader(f)
         for i, row in enumerate(reader):
+            if settings.get("csv_row_numbers") == "1":
+                row = write_csv(i, row)
+
             if i == 0:
                 output.append("```")
 

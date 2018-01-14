@@ -16,11 +16,19 @@ def decode_all_matching_urls(match):
     match = match.group()
     return url_decode(match)
 
+def vertical_lines(row):
+    for i, item in enumerate(row):
+        if i != 0:
+            row[i] = "| " + item
+
+    return row
+
 def write_csv(i, row):
     if i == 0:
         row.insert(0, 'row')
     else:
         row.insert(0, str(i))
+
     return row
 
 def read_csv(file, settings):
@@ -34,6 +42,9 @@ def read_csv(file, settings):
         for i, row in enumerate(reader):
             if settings.get("csv_row_numbers") == "1":
                 row = write_csv(i, row)
+
+            if settings.get("csv_v_break") == "1":
+                row = vertical_lines(row)
 
             for i, item in enumerate(row[:(len(row)/2)]):
                 if (len(formatting) <= i): # inits the list
@@ -52,6 +63,9 @@ def read_csv(file, settings):
         for i, row in enumerate(reader):
             if settings.get("csv_row_numbers") == "1":
                 row = write_csv(i, row)
+
+            if settings.get("csv_v_break") == "1":
+                row = vertical_lines(row)
 
             if i == 0:
                 output.append("```")
@@ -75,7 +89,6 @@ def screenshot():
     return
 
 def format_fields(settings):
-
     if settings.get('assignee_ping') == "1":
         assignee = '<' + str(settings.get('assignee')) + '>'
     elif ',' in settings.get('assignee') and settings.get('assignee_ping') == "1":

@@ -160,7 +160,8 @@ def send_slack_message(settings, global_settings):
     params['mrkdwn'] = True
 
     params['attachments'] = []
-    author = "Alert managed by: " + settings.get('author')
+    if settings.get('author') != None:
+        author = "Alert managed by: " + settings.get('author')
 
     if settings.get('csv') == "1":
         csv = read_csv(global_settings['results_file'], settings)

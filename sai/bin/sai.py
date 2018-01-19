@@ -89,12 +89,12 @@ def screenshot():
     return
 
 def format_fields(settings):
-    if settings.get('assignee_ping') == "1":
-        assignee = '<' + str(settings.get('assignee')) + '>'
-    elif ',' in settings.get('assignee') and settings.get('assignee_ping') == "1":
+    if ',' in settings.get('assignee') and settings.get('assignee_ping') == "1":
         contact = str(settings.get('assignee'))
         contacts = contact.split(',')
         assignee = "Primary: <" + contacts[0] + ">\nSecondary: <" + contacts[1] + ">"
+    elif settings.get('assignee_ping') == "1":
+        assignee = '<' + str(settings.get('assignee')) + '>'
     elif ',' in settings.get('assignee') and settings.get('assignee_ping') == "0":
         contact = str(settings.get('assignee'))
         contacts = contact.split(',')

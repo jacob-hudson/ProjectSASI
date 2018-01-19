@@ -89,22 +89,29 @@ def screenshot():
     return
 
 def format_fields(settings):
-    if ',' in settings.get('assignee') and settings.get('assignee_ping') == "1":
+    if ',' in settings.get('assignee') and settings.get('assignee_ping') == "1" and settings.get('assignee') != None::
         contact = str(settings.get('assignee'))
         contacts = contact.split(',')
         assignee = "Primary: <" + contacts[0] + ">\nSecondary: <" + contacts[1] + ">"
-    elif settings.get('assignee_ping') == "1":
+    elif settings.get('assignee_ping') == "1" and settings.get('assignee') != None::
         assignee = '<' + str(settings.get('assignee')) + '>'
-    elif ',' in settings.get('assignee') and settings.get('assignee_ping') == "0":
+    elif ',' in settings.get('assignee') and settings.get('assignee_ping') == "0" and settings.get('assignee') != None:
         contact = str(settings.get('assignee'))
         contacts = contact.split(',')
         assignee = "Primary: " + contacts[0] + "\nSecondary: " + contacts[1]
-    else:
+    elif settings.get('assignee') != None:
         assignee = str(settings.get('assignee'))
+    else: # no assignee (assignee is blank)
+        pass
 
-    f1 = {'title': "Expected",'value': settings.get('expected'),'short': True}
-    f2 = {'title': "Actual",'value': settings.get('actual'),'short': True}
-    f3 = {'title': "Assignee",'value': assignee,'short': True}
+    if settings.get('expected') != None:
+        f1 = {'title': "Expected",'value': settings.get('expected'),'short': True}
+
+    if settings.get('actual') != None:
+        f2 = {'title': "Actual",'value': settings.get('actual'),'short': True}
+
+    if assignee != None:
+        f3 = {'title': "Assignee",'value': assignee,'short': True}
 
     links = []
     all_links = ""

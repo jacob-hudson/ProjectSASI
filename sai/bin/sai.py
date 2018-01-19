@@ -175,8 +175,8 @@ def send_slack_message(settings, global_settings):
 
     params['attachments'].append({'text': message,'color': settings.get('color'),'footer': author,'fields': format_fields(settings),"mrkdwn_in": ["text"]})
 
-    with open('data.json', 'w') as outfile:
-    	json.dump(params, outfile)
+    # with open('data.json', 'w') as outfile:
+    # 	json.dump(params, outfile)
 
     channel = settings.get('channel')
     if channel:

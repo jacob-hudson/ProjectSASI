@@ -85,7 +85,7 @@ def read_csv(file, settings):
     return output
 
 def screenshot():
-    # TODO: create a bot user and use that uuser for the file API
+    # TODO: create a bot user and use that user for the file API
     return
 
 def format_fields(settings):

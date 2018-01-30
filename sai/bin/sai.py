@@ -89,7 +89,7 @@ def screenshot():
     return
 
 def format_fields(settings):
-    if ',' in settings.get('assignee') and settings.get('assignee_ping') == "1" and settings.get('assignee') != None::
+    if ',' in settings.get('assignee') and settings.get('assignee_ping') == "1" and settings.get('assignee') != None:
         contact = str(settings.get('assignee'))
         contacts = contact.split(',')
         assignee = "Primary: <" + contacts[0] + ">\nSecondary: <" + contacts[1] + ">"

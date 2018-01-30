@@ -106,12 +106,18 @@ def format_fields(settings):
 
     if settings.get('expected') != None:
         f1 = {'title': "Expected",'value': settings.get('expected'),'short': True}
+    else: # no expected result given
+        f1 = None
 
     if settings.get('actual') != None:
         f2 = {'title': "Actual",'value': settings.get('actual'),'short': True}
+    else:
+        f2 = None
 
     if assignee != None:
         f3 = {'title': "Assignee",'value': assignee,'short': True}
+    else:
+        f3 = None
 
     links = []
     all_links = ""
@@ -137,7 +143,9 @@ def format_fields(settings):
             else:
                 all_links = all_links + '| ' + link + ' '
 
+    # Results Link is prepopulated
     f4 = {'title': "Links",'value': all_links,'short': True}
+
     return f1,f2,f3,f4
 
 def send_slack_message(settings, global_settings):

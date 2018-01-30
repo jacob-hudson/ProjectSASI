@@ -89,19 +89,22 @@ def screenshot():
     return
 
 def format_fields(settings):
-    if ',' in settings.get('assignee') and settings.get('assignee_ping') == "1" and settings.get('assignee') != None:
+    if settings.get('assignee') == None:
+        assignee = None
+        pass
+    elif ',' in settings.get('assignee') and settings.get('assignee_ping') == "1":
         contact = str(settings.get('assignee'))
         contacts = contact.split(',')
         assignee = "Primary: <" + contacts[0] + ">\nSecondary: <" + contacts[1] + ">"
-    elif settings.get('assignee_ping') == "1" and settings.get('assignee') != None:
+    elif settings.get('assignee_ping') == "1":
         assignee = '<' + str(settings.get('assignee')) + '>'
-    elif ',' in settings.get('assignee') and settings.get('assignee_ping') == "0" and settings.get('assignee') != None:
+    elif ',' in settings.get('assignee') and settings.get('assignee_ping') == "0":
         contact = str(settings.get('assignee'))
         contacts = contact.split(',')
         assignee = "Primary: " + contacts[0] + "\nSecondary: " + contacts[1]
     elif settings.get('assignee') != None:
         assignee = str(settings.get('assignee'))
-    else: # no assignee (assignee is blank)
+    else: # multiple assignees and all should be pinged
         pass
 
     if settings.get('expected') != None:

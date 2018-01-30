@@ -93,7 +93,7 @@ def format_fields(settings):
         contact = str(settings.get('assignee'))
         contacts = contact.split(',')
         assignee = "Primary: <" + contacts[0] + ">\nSecondary: <" + contacts[1] + ">"
-    elif settings.get('assignee_ping') == "1" and settings.get('assignee') != None::
+    elif settings.get('assignee_ping') == "1" and settings.get('assignee') != None:
         assignee = '<' + str(settings.get('assignee')) + '>'
     elif ',' in settings.get('assignee') and settings.get('assignee_ping') == "0" and settings.get('assignee') != None:
         contact = str(settings.get('assignee'))

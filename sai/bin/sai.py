@@ -46,6 +46,7 @@ def read_csv(file, settings):
             if settings.get("csv_v_break") == "1":
                 row = vertical_lines(row)
 
+            # Splunk appends an extra column for every result column that we do not need, we only want the first half
             for i, item in enumerate(row[:(len(row)/2)]):
                 if (len(formatting) <= i): # inits the list
                     formatting.append(len(item) + 1)

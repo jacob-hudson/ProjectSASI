@@ -91,7 +91,7 @@ def auth(driver):
 def main(option, value):
     start_time = time.time()
     driver = webdriver.PhantomJS(service_args=['--ignore-ssl-errors=true', '--ssl-protocol=any'])
-    driver.get('url')
+    driver.get(url)
 
     try: # seeing if the session has expired
         driver.find_element_by_xpath('/html/body/div[1]/header/div[1]/a/i')
@@ -113,9 +113,10 @@ def main(option, value):
     return
 
 if __name__ == "__main__":
-    option = sys.argv[1]
+    url = sys.argv[1]
+    option = sys.argv[2]
     try:
-        value = sys.argv[2]
+        value = sys.argv[3]
     except:
         value = ""
     main(option, value)

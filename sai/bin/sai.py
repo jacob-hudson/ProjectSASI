@@ -4,6 +4,7 @@ import urllib2
 import re
 import csv
 import gzip
+import requests
 
 def url_decode(urlstring):
     return urllib2.unquote(urlstring).decode('utf8')
@@ -85,6 +86,28 @@ def read_csv(file, settings):
     output.append("```")
     return output
 
+def slack_image_upload():
+    data = {}
+    data['token'] = "xoxb-token"
+    data['file'] = screenshot_file
+    data['channel'] = settings.get('channel')
+
+    filepath = data['file']
+    files = {
+        'file': (filepath, open(filepath, 'rb'), 'image/jpg', {
+            'Expires': '0'
+        })
+    }
+    data['media'] = files
+
+    response = requests.post(
+        url='https://slack.com/api/files.upload',
+        data=data,
+        headers={'Accept': 'application/json'},
+        files=files)
+    
+    return
+                                   
 def screenshot():
     # TODO: create a bot user and use that user for the file API
     return

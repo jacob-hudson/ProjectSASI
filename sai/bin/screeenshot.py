@@ -3,13 +3,17 @@ from PIL import Image
 import time
 import sys
 
+# global variables
+raw_file = ""
+final_file = ""
+
 def screenshot_statistics(driver):
     take_screenshot(driver)
     element = driver.find_element_by_xpath('/html/body')
-    # location = element.location
-    # size = element.size
-    # take_screenshot(driver)
-    # crop_screenshot(element, location, size)
+    location = element.location
+    size = element.size
+    take_screenshot(driver)
+    crop_screenshot(element, location, size)
     return
 
 def poll_single_search(driver, number):
@@ -49,13 +53,44 @@ def screenshot_full(driver):
     crop_screenshot(element, location, size)
     return
 
+def set_filenames():
+    int_time = int(time.time())
+    str_time = str(int_time)
+    raw_file = "splunk_screenshot_" + str_time + "_raw.png"
+    final_file = "splunk_screenshot_" + str_time + ".png"
+
+    return
+
 def take_screenshot(driver):
-    driver.save_screenshot('screenshot_splunk.png') # saves screenshot of entire page
+    set_filenames()
+    driver.save_screenshot(raw_file) # saves screenshot of entire page
     driver.quit()
     return
 
+def slack_image_upload(screenshot_file):
+    data = {}
+    data['token'] = "bot_token"
+    data['file'] = screenshot_file
+    data['channel'] = settings.get('channel')
+
+    filepath = data['file']
+    files = {
+        'file': (filepath, open(filepath, 'rb'), 'image/jpg', {
+            'Expires': '0'
+        })
+    }
+    data['media'] = files
+
+    response = requests.post(
+        url='https://slack.com/api/files.upload',
+        data=data,
+        headers={'Accept': 'application/json'},
+        files=files)
+
+    return
+
 def crop_screenshot(element, location, size):
-    im = Image.open('screenshot_splunk.png') # uses PIL library to open image in memory
+    im = Image.open(raw_file) # uses PIL library to open image in memory
 
     left = location['x']
     top = location['y']
@@ -63,8 +98,8 @@ def crop_screenshot(element, location, size):
     bottom = location['y'] + size['height']
 
     im = im.crop((left, top, right, bottom)) # defines crop points
-    im.save('screenshot.png') # saves new cropped image
-
+    im.save(final_file) # saves new cropped image
+    slack_image_upload(final_file)
     return
 
 def auth(driver):

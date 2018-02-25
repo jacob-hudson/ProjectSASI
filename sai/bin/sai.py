@@ -86,30 +86,12 @@ def read_csv(file, settings):
     output.append("```")
     return output
 
-def slack_image_upload():
-    data = {}
-    data['token'] = "xoxb-token"
-    data['file'] = screenshot_file
-    data['channel'] = settings.get('channel')
-
-    filepath = data['file']
-    files = {
-        'file': (filepath, open(filepath, 'rb'), 'image/jpg', {
-            'Expires': '0'
-        })
-    }
-    data['media'] = files
-
-    response = requests.post(
-        url='https://slack.com/api/files.upload',
-        data=data,
-        headers={'Accept': 'application/json'},
-        files=files)
-    
-    return
-                                   
-def screenshot():
-    # TODO: create a bot user and use that user for the file API
+def screenshot(settings):
+    if settings.get('screenshot') != "none":
+        full_python = "python"
+        # need access to selenium for screenshots
+        command = full_python + settings.get('dashboard') + settings.get('screenshot') + settings.get('panelrow')
+        os.system(command)
     return
 
 def format_fields(settings):
@@ -222,6 +204,7 @@ def send_slack_message(settings, global_settings):
     body = json.dumps(params)
     print >> sys.stderr, 'DEBUG Calling url="%s" with body=%s' % (url, body)
     req = urllib2.Request(url, body, {"Content-Type": "application/json"})
+    screenshot(settings)
     try:
         res = urllib2.urlopen(req)
         body = res.read()

@@ -174,6 +174,29 @@
     </div>
   </div>
   <div class="control-group">
+      <label class="control-label">Screenshot</label>
+        <div class="controls">
+            <label class="radio" for="slack_screenshots">
+                <input id="slack_screenshots" type="radio" name="action.sai.param.screenshot" value="none" />
+                None
+            </label>
+            <label class="radio" for="slack_screenshots">
+                <input id="slack_screenshots" type="radio" name="action.sai.param.screenshot" value="full" />
+                Full Dash
+            </label>
+            <label class="radio" for="slack_screenshots">
+                <input id="slack_screenshots" type="radio" name="action.sai.param.screenshot" value="row" />
+                Dash Row
+            </label>
+            <label class="radio" for="slack_screenshots">
+                <input id="slack_screenshots" type="radio" name="action.sai.param.screenshot" value="panel" />
+                Dash Pane
+            </label>
+            <input type="text" name="action.sai.param.panelrow" id="slack_panelrow_number" />
+            <span class="help-block">Row/Panel number (Panels are ordered starting with the top left as 0)</span>
+        </div>
+    </div>
+  <div class="control-group">
     <label class="control-label" for="slack_message">Message*</label>
     <div class="controls">
       <textarea name="action.sai.param.message" id="slack_message" style="height: 120px;"></textarea>

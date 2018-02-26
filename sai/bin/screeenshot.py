@@ -104,7 +104,7 @@ def crop_screenshot(element, location, size):
 
 def auth(driver):
         driver.find_element_by_xpath('//*[@id="username"]').send_keys('slack_screenshots')
-        driver.find_element_by_xpath('//*[@id="password"]').send_keys('3h*dn5YR%3RQYFVq')
+        driver.find_element_by_xpath('//*[@id="password"]').send_keys('test_password')
         try:
             driver.find_element_by_xpath('/html/body/div[2]/div/div/div[1]/form/fieldset/input[1]').click()
         except:

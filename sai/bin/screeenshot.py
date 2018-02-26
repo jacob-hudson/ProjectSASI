@@ -6,6 +6,7 @@ import sys
 # global variables
 raw_file = ""
 final_file = ""
+channel = ""
 
 def screenshot_statistics(driver):
     take_screenshot(driver)
@@ -71,7 +72,7 @@ def slack_image_upload(screenshot_file):
     data = {}
     data['token'] = "bot_token"
     data['file'] = screenshot_file
-    data['channel'] = settings.get('channel')
+    data['channel'] = channel
 
     filepath = data['file']
     files = {
@@ -151,8 +152,9 @@ def main(option, value):
 if __name__ == "__main__":
     url = sys.argv[1]
     option = sys.argv[2]
+    channel = sys.argv[3]
     try:
-        value = sys.argv[3]
+        value = sys.argv[4]
     except:
         value = ""
     main(option, value)

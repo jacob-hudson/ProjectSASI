@@ -5,6 +5,7 @@ import re
 import csv
 import gzip
 import requests
+import os
 
 def url_decode(urlstring):
     return urllib2.unquote(urlstring).decode('utf8')
@@ -89,8 +90,13 @@ def read_csv(file, settings):
 def screenshot(settings):
     if settings.get('screenshot') != "none":
         full_python = "python"
+
+        if settings.get('panelrow') != None:
+            panelrow = settings.get('panelrow')
+        else:
+            panelrow = ""
         # need access to selenium for screenshots
-        command = full_python + settings.get('dashboard') + settings.get('screenshot') + settings.get('panelrow')
+        command = full_python + " screenshot.py " + str(settings.get('dashboard')) + " " + str(settings.get('screenshot')) + " " + str(settings.get('channel')) + " " + str(settings.get('panelrow'))
         os.system(command)
     return
 

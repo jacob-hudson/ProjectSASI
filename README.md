@@ -13,7 +13,7 @@ Includes:
 - `Slack Bot User Token` - For screenshots
 - `Full Python 2.7 install (System Python can work)` on the search head- For screenshots
 - `Selenium via Pip (pip install selenium)` on the sarach head- For screenshots
-- `PhantomJS` on the search head - Fro screenshots
+- `PhantomJS` on the search head - For screenshots
 
 ## Build
 ### Pre-Built Packages

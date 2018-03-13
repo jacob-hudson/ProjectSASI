@@ -33,3 +33,6 @@ Includes:
 
 ### CSV File
 ![Example Slack Alerts](https://github.com/jacob-hudson/ProjectSASI/blob/master/data/img/example_csv.png?raw=true "Example Slack Alerts - CSV")
+
+## Known Bugs
+- Dropdowns for Color and Emoji do not work (workaround: write in the color or emoji into the textbok for custom)

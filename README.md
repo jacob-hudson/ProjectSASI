@@ -36,3 +36,6 @@ Includes:
 
 ## Known Bugs
 - Dropdowns for Color and Emoji do not work (workaround: write in the color or emoji into the textbok for custom)
+
+## Find an issue?
+- Please report it ![here](https://github.com/jacob-hudson/ProjectSASI/issues/new "here")

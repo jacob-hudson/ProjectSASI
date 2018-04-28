@@ -2,6 +2,7 @@ from selenium import webdriver
 from PIL import Image
 import time
 import sys
+import os
 
 # global variables
 raw_file = ""
@@ -115,7 +116,8 @@ def auth(driver):
 
 def main(option, value):
     start_time = time.time()
-    driver = webdriver.PhantomJS(service_args=['--ignore-ssl-errors=true', '--ssl-protocol=any'])
+    log_path = os.environ['SPLUNK_HOME'] + '/var/log/splunk'
+    driver = webdriver.PhantomJS(service_args=['--ignore-ssl-errors=true', '--ssl-protocol=any', '--service_log_path='log_path])
     driver.get(url)
 
     try: # seeing if the session has expired

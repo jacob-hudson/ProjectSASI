@@ -10,7 +10,10 @@ Includes:
 
 ## Requirements
 - `Slack Webhook Token` - For all standard alert features
-- `Slack API Token` - For screenshots
+- `Slack Bot User Token` - For screenshots
+- `Full Python 2.7 install (System Python can work)` on the search head- For screenshots
+- `Selenium via Pip (pip install selenium)` on the sarach head- For screenshots
+- `PhantomJS` on the search head - For screenshots
 
 ## Build
 ### Pre-Built Packages
@@ -30,3 +33,9 @@ Includes:
 
 ### CSV File
 ![Example Slack Alerts](https://github.com/jacob-hudson/ProjectSASI/blob/master/data/img/example_csv.png?raw=true "Example Slack Alerts - CSV")
+
+## Known Bugs
+- Dropdowns for Color and Emoji do not work (workaround: write in the color or emoji into the textbok for custom)
+
+## Find an issue?
+- Please report it [here](https://github.com/jacob-hudson/ProjectSASI/issues/new)

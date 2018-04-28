@@ -2,6 +2,7 @@ from selenium import webdriver
 from PIL import Image
 import time
 import sys
+import requests
 import os
 
 # global variables
